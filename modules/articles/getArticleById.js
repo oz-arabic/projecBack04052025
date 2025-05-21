@@ -33,7 +33,7 @@ async function getArticleById(req, res) {
   const { data: linesData, error: linesError } = await supaBaseClient.client
     .from("root_data")
     .select(
-      "id, line_index, word_index, arabic_text, taatic_text, arabic_text_tashkil"
+      "id, dictionary_id, line_index, word_index, arabic_text, taatic_text, arabic_text_tashkil"
     )
     .eq("article_id", articleId)
     .order("line_index", { ascending: true })
