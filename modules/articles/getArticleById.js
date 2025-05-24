@@ -14,7 +14,7 @@ async function getArticleById(req, res) {
   // 1) Fetch the metadata from "root_data_2"
   const { data: metaData, error: metaError } = await supaBaseClient.client
     .from("root_data_2") // Table that stores URL, start_time, end_time
-    .select("start_time, end_time, URL")
+    .select(" URL")
     .eq("article_id", articleId)
     .maybeSingle(); // Ensures only one row is fetched, allows null without error
 
@@ -33,7 +33,7 @@ async function getArticleById(req, res) {
   const { data: linesData, error: linesError } = await supaBaseClient.client
     .from("root_data")
     .select(
-      "id, dictionary_id, line_index, word_index, arabic_text, taatic_text, arabic_text_tashkil"
+      "id, dictionary_id, line_index, word_index, start_time, end_time, arabic_text, taatic_text, arabic_text_tashkil"
     )
     .eq("article_id", articleId)
     .order("line_index", { ascending: true })
