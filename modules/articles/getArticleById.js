@@ -14,7 +14,7 @@ async function getArticleById(req, res) {
   // 1) Fetch the metadata from "root_data_2"
   const { data: metaData, error: metaError } = await supaBaseClient.client
     .from("root_data_2") // Table that stores URL, start_time, end_time
-    .select(" URL")
+    .select(" URL, video_ends, video_strats")
     .eq("article_id", articleId)
     .maybeSingle(); // Ensures only one row is fetched, allows null without error
 
@@ -69,8 +69,8 @@ async function getArticleById(req, res) {
   // 5) Return final JSON response
   return res.json({
     lines: Object.fromEntries(groupedLines), // Converts Map to an object
-    startTime: metaData.start_time,
-    endTime: metaData.end_time,
+    startTime: metaData.video_strats,
+    endTime: metaData.video_ends,
     url: metaData.URL,
   });
 }
