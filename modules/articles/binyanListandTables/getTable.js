@@ -11,8 +11,8 @@ dotenv.config();
  * Otherwise           → all rows for every wazen.
  *
  * ─ Columns returned (exact order) ─
- *   masdar | b_pauul | b_poel | hove_atid_c | hove_atid_b | hove_atid_a
- *   avar_b | avar_a  | guf    | wazen_id
+ *   masdar | b_pauul | b_poel | tzivui_1 | tzivui_2 | tzivui_3 |
+ *   hove_atid_c | hove_atid_b | hove_atid_a | avar_b | avar_a | guf | wazen_id
  */
 async function getTable(req, res) {
   try {
@@ -26,6 +26,9 @@ async function getTable(req, res) {
         masdar,
         b_pauul,
         b_poel,
+        tzivui_1,
+        tzivui_2,
+        tzivui_3,
         hove_atid_c,
         hove_atid_b,
         hove_atid_a,
