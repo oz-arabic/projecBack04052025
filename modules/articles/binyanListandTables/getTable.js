@@ -20,7 +20,7 @@ async function getTable(req, res) {
 
     /* 1) Build base query */
     let query = supaBaseClient.client
-      .from("all_awzan_table")
+      .from("awzan_table_1")
       .select(
         `
         masdar,
