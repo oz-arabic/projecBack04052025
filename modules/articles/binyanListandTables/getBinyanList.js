@@ -58,7 +58,11 @@ async function getBinyanList(req, res) {
 
     data.forEach((row) => {
       Object.keys(lists).forEach((col) => {
-        if (row[col]) lists[col].push(row[col]);
+        const val = row[col];
+        // Skip null, undefined, empty strings or purely whitespace entries
+        if (val !== null && val !== undefined && String(val).trim() !== "") {
+          lists[col].push(val);
+        }
       });
     });
 
