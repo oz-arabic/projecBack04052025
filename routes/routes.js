@@ -7,6 +7,9 @@ const {
 const {
   getTable,
 } = require("../modules/articles/binyanListandTables/getTable");
+const {
+  getArabicAndTaaticMapTable,
+} = require("../modules/articles/info_section/getArabicAndTaaticMapTable");
 
 const router = express.Router();
 
@@ -16,5 +19,6 @@ router.get("/dictionary/:id", getDictionaryData); // keep this for single-entry 
 router.get("/verb-tables", getBinyanList);
 
 router.get("/verb-tables/binyan", getTable);
+router.get("/info/arabic-taatic-map", getArabicAndTaaticMapTable);
 
 module.exports = router;

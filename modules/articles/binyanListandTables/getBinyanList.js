@@ -33,21 +33,6 @@ async function getBinyanList(req, res) {
       return res.status(404).json({ error: "No binyan lists found" });
     }
 
-    /* 2) Pivot rows → column-arrays
-       --------------------------------------------------
-       raw data looks like:
-       [
-         { binyan_list_shlemim: 'בניין 1', binyan_list_kfulim: 'בניין 1', ... },
-         { binyan_list_shlemim: 'בניין 2', binyan_list_kfulim: 'בניין 2', ... },
-         …
-       ]
-       We want:
-       {
-         binyan_list_shlemim: ['בניין 1', 'בניין 2', …],
-         binyan_list_kfulim:   ['בניין 1', 'בניין 2', …],
-         …
-       }
-    */
     const lists = {
       binyan_list_shlemim: [],
       binyan_list_kfulim: [],
