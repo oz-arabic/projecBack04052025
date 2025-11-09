@@ -48,7 +48,7 @@ async function getDictionaryData(req, res) {
       ...entry,
     }));
 
-    console.log("📡 Final Dictionary Response:", formattedData);
+    // console.log("📡 Final Dictionary Response:", formattedData);
     res.json(formattedData);
   } catch (err) {
     console.error("❌ Unexpected server error:", err);
