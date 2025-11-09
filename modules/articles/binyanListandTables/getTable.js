@@ -5,7 +5,7 @@ const { supaBaseClient } = require("../../../services/supaBaseClient");
 dotenv.config();
 
 /**
- * GET  /api/verb-tables/:wazenId?          (optional param)
+ * GET  /api/verb-tables/binyan?wazenId=XX  (optional query param)
  *
  * If :wazenId is given → one wazen (its rows).
  * Otherwise           → all rows for every wazen.
@@ -16,7 +16,7 @@ dotenv.config();
  */
 async function getTable(req, res) {
   try {
-    const { wazenId } = req.params; // /verb-tables/1  → wazenId = "1"
+    const { wazenId } = req.query; // /verb-tables/binyan?wazenId=1 ⇒ "1"
 
     /* 1) Build base query */
     let query = supaBaseClient.client
