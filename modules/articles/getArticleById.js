@@ -44,10 +44,16 @@ async function getArticleById(req, res) {
     return res.status(500).json({ error: "Error fetching lines data" });
   }
 
+  // Allow empty transcription for testing videos without content
   if (!linesData || linesData.length === 0) {
-    return res
-      .status(404)
-      .json({ error: `No transcription found for article ID ${articleId}` });
+    console.log(`⚠️ No transcription found for article ID ${articleId}, returning video metadata only`);
+    // Return just the metadata without transcription lines
+    return res.json({
+      lines: {}, // Empty lines object
+      startTime: metaData.video_strats,
+      endTime: metaData.video_ends,
+      url: metaData.URL,
+    });
   }
 
   // ✅ Fix duplication by using a Set to remove repeated words in the same line
